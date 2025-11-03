@@ -1,14 +1,12 @@
 .data  
 msg1: .asciiz "Please enter an integer: "  
-msg9: .asciiz "The decimal is: "  
-msg2: .asciiz "\nThe binary is: "
-msg3: .asciiz "\nThe hexadecimal is: " 
-var7: .word 69
-var8: .word 23 
+msg_temp: .asciiz "The decimal is: "  
+msg4: .asciiz "\nWould you like to convert another integer? (0 or 1): "
 
 .text  
 .globl main  
 main:  
+loop:
     # print msg1 
     li $v0, 4
     la $a0, msg1
@@ -18,39 +16,29 @@ main:
     li $v0, 5
     syscall
 
-    move $t0, $v0   # move user value to to $t0 
+    move $t1, $v0   # move user value to to $t1 
 
-    # print msg9 ~~~~~~~~~~~~~~~~~
+    # print msg_temp ~~~~~~~~~~~~~~~~~
     li $v0, 4
-    la $a0, msg9
+    la $a0, msg_temp
     syscall
 
     # print decimal value 
     li $v0, 1
-    move $a0, $t0 
+    move $a0, $t1 
     syscall
 
-    # print msg2 ~~~~~~~~~~~~~~~~~~~~~~`
+    # print msg4 ~~~~~~~~~~~~~~~~~
     li $v0, 4
-    la $a0, msg2
+    la $a0, msg4
     syscall
 
-    # print binary value 
-    li $v0, 1
-    lw $t0, var7
-    move $a0, $t0 
-    syscall
+    # get menu input to quit or continue and store in $t0 
+    li $v0, 5
+    syscall 
+    move $t0, $v0
 
-    # print msg3 ~~~~~~~~~~~~~~~~~~~~~~`
-    li $v0, 4
-    la $a0, msg3
-    syscall
-
-    # print binary value 
-    li $v0, 1
-    lw $t0, var8
-    move $a0, $t0 
-    syscall
+    bne $t0, $zero, loop # stay in loop while ($t0 != $t0) 
 
     li $v0, 10      # Exit system call  
     syscall
