@@ -2,6 +2,7 @@
 arr: .space 400
 .text
 main: 
+# TEMP COMMENT 
     li $s1, 387       # decimal 
     la $s0, arr     # base address of empty array 
     li $t0, 0       # loop counter 
