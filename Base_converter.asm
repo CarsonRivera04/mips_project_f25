@@ -4,6 +4,7 @@ prompt: .asciiz "Enter an integer 0-65535: "
 newline:   .asciiz "\n"
 binary: .asciiz "Binary: "
 hex:    .asciiz "Hexadecimal: "
+x:      .asciiz "0x" 
 .text
 .globl main
 main:
@@ -37,6 +38,10 @@ binary_loop:
 
     li $v0, 4
     la $a0, hex
+    syscall
+
+    li $v0, 4
+    la $a0, x
     syscall
 
     la $t4, hexLookup
