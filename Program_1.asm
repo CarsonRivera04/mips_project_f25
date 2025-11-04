@@ -5,6 +5,7 @@ msg2: .asciiz "It is morning.\n"
 msg3: .asciiz "It is noon.\n"
 msg4: .asciiz "It is afternoon.\n"
 .text  
+.globl main
 main:  
     # print msg1
     li $v0, 4
