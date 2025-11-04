@@ -1,7 +1,7 @@
 .data
 hexLookup: .byte '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'
 prompt: .asciiz "Enter an integer 0-65535: "
-prompt2: .asciiz "Would you like to convert another integer? (0 or 1)"
+prompt2: .asciiz "Would you like to convert another integer? (0 or 1) "
 newline:   .asciiz "\n"
 binary: .asciiz "Binary: "
 hex:    .asciiz "Hexadecimal: "
