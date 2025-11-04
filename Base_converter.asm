@@ -1,6 +1,7 @@
 .data
 hexLookup: .byte '0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'
 prompt: .asciiz "Enter an integer 0-65535: "
+prompt2: .asciiz "Would you like to convert another integer? (0 or 1)"
 newline:   .asciiz "\n"
 binary: .asciiz "Binary: "
 hex:    .asciiz "Hexadecimal: "
@@ -8,6 +9,7 @@ x:      .asciiz "0x"
 .text
 .globl main
 main:
+outer_loop:
     li $v0, 4        
     la $a0, prompt
     syscall
@@ -61,6 +63,18 @@ hex_loop:
     li $v0, 4
     la $a0, newline
     syscall
+    
+    #ask user to go again
+    li $v0, 4
+    la $a0, prompt2
+    syscall
+
+    #get input for outer_loop
+    li $v0, 5
+    syscall
+    move $t7, $v0
+
+    bne $t7, $zero, outer_loop
 
 end_program:
     li $v0, 10
