@@ -1,0 +1,10 @@
+Group 7 Contributions 
+
+Carson Rivera
+- Completed Program_1.asm as well as the menu loop for Base_converter.asm 
+
+Lucas Gomez 
+- Completed Program_2.asm as well as the menu loop for Base_converter.asm
+
+Jaime Flandes
+- Completed Program_3.asm as well as the conversions from decimal to binary and and hex for Base_converter.asm
